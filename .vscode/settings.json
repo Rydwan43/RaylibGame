@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        ".fantomasignore": "ignore",
+        "render.h": "c",
+        "init.h": "c",
+        "time.h": "c",
+        "terrain.h": "c",
+        "game.h": "c"
+    }
+}

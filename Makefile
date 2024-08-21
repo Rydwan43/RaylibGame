@@ -5,7 +5,7 @@ UNAME := $(shell uname)
 
 # Source files and directories
 SRCS_MAIN = main/main.c
-SRCS_SOURCE = source/init.c source/game.c source/render.c source/cleanup.c
+SRCS_SOURCE = source/init.c source/game.c source/render.c source/cleanup.c source/terrain.c
 SRCS = $(SRCS_MAIN) $(SRCS_SOURCE)
 
 # Object files

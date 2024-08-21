@@ -2,6 +2,7 @@
 #include "init.h"
 #include "game.h"
 #include "render.h"
+#include "terrain.h"
 #include "cleanup.h"
 
 int main(void)
@@ -18,6 +19,7 @@ int main(void)
     Texture2D cubicmap = LoadCubicMapTexture(&imMap);
     Texture2D cubesTexture = LoadTexture("resources/cubicmap_atlas.png");
 
+    Model terrain = GetTerrain(0);
     Model model = LoadMapModel(imMap, cubesTexture);
 
     Color *mapPixels = LoadImageColors(imMap);
@@ -29,15 +31,23 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        UpdateCameraAndCheckCollision(&camera, mapPixels, cubicmap, mapPosition);
+        if (IsKeyPressed(KEY_G))
+        {
+            UnloadModel(terrain);
+
+            terrain = GetTerrain(0);
+        }
+
+        UpdateCameraAndCheckCollision(&camera);
         UpdateMusic(music);
 
         int playerCellX = (int)(camera.position.x - mapPosition.x + 0.5f);
         int playerCellY = (int)(camera.position.z - mapPosition.z + 0.5f);
 
-        RenderScene(camera, model, mapPosition, cubicmap, playerCellX, playerCellY);
+        RenderGame(camera, model, terrain, mapPosition, cubicmap, playerCellX, playerCellY);
     }
 
     Cleanup(mapPixels, cubicmap, model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture, model, music);
+    UnloadModel(terrain); // Clean up terrain model before exiting
     return 0;
 }

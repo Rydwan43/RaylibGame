@@ -3,6 +3,7 @@
 void InitializeWindowAndAudio(int screenWidth, int screenHeight)
 {
     InitWindow(screenWidth, screenHeight, "Program Interaktywny Trójwymiarowy 2024");
+    SetExitKey(KEY_NULL);
     InitAudioDevice();
 }
 
