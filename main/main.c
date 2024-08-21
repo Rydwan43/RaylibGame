@@ -23,6 +23,7 @@ int main(void)
     const int screenWidth = 1024;
     const int screenHeight = 768;
 
+    ChangeDirectory(GetApplicationDirectory());
     InitializeWindowAndAudio(screenWidth, screenHeight);
 
     Music music = LoadAndPlayMusic("resources/ambient.ogg");
