@@ -4,6 +4,6 @@
 #include "raylib.h"
 
 // Function prototypes for rendering
-void RenderGame(Camera camera, Model modeltwo, Model model, Vector3 mapPosition, Texture2D cubicmap, int playerCellX, int playerCellY);
+void RenderGame(Camera camera, Model model, Vector3 mapPosition);
 
 #endif // RENDER_H

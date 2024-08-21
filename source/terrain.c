@@ -155,13 +155,8 @@ void generateHeightMapHill(unsigned char heightMap[WIDTH][HEIGHT])
     }
 }
 
-Model LoadTerrainFromMemory(unsigned char heightMap[WIDTH][HEIGHT])
+Model LoadTerrainFromMemory(unsigned char heightMap[WIDTH][HEIGHT], Image sandImage, Image grassImage, Image mountainImage)
 {
-    // Load textures for different terrain types
-    Image sandImage = LoadImage("resources/sand.png");
-    Image grassImage = LoadImage("resources/grass.png");
-    Image mountainImage = LoadImage("resources/mountain.png");
-
     // Create an empty image to store the final texture
     Image textureImage = GenImageColor(WIDTH, HEIGHT, WHITE);
 
@@ -240,9 +235,6 @@ Model LoadTerrainFromMemory(unsigned char heightMap[WIDTH][HEIGHT])
     model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;
 
     // Unload the images from RAM since they are now on the GPU
-    UnloadImage(sandImage);
-    UnloadImage(grassImage);
-    UnloadImage(mountainImage);
     UnloadImage(textureImage);
 
     // Return the loaded model
@@ -272,7 +264,7 @@ int GetHeightAt(unsigned char heightMap[WIDTH][HEIGHT], int x, int y)
     return -1; // Invalid height
 }
 
-Model GetTerrain(int mapType)
+Model GetTerrain(int mapType, Image sandImage, Image grassImage, Image mountainImage)
 {
 
     unsigned char heightMap[WIDTH][HEIGHT];
@@ -286,7 +278,7 @@ Model GetTerrain(int mapType)
         break;
     }
 
-    Model terrain = LoadTerrainFromMemory(heightMap);
+    Model terrain = LoadTerrainFromMemory(heightMap, sandImage, grassImage, mountainImage);
 
     return terrain;
 }

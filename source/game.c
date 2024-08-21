@@ -3,7 +3,7 @@
 void UpdateCameraAndCheckCollision(Camera *camera)
 {
     Vector3 oldCamPos = camera->position;
-    UpdateCamera(camera, CAMERA_FREE);
+    UpdateCamera(camera, CAMERA_ORBITAL);
 
     Vector2 playerPos = {camera->position.x, camera->position.z};
     float playerRadius = 0.1f;

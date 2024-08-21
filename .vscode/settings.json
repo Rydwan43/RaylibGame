@@ -5,6 +5,12 @@
         "init.h": "c",
         "time.h": "c",
         "terrain.h": "c",
-        "game.h": "c"
+        "game.h": "c",
+        "cmath": "c",
+        "complex": "c",
+        "math.h": "c",
+        "raylib.h": "c",
+        "raygui.h": "c",
+        "stdio.h": "c"
     }
 }

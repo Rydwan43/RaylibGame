@@ -3,6 +3,6 @@
 
 #include "raylib.h"
 
-Model GetTerrain(int mapType);
+Model GetTerrain(int mapType, Image sandImage, Image grassImage, Image mountainImage);
 
 #endif // TERRAIN_H
